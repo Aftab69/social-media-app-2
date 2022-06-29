@@ -2,6 +2,7 @@ const express = require("express");
 const router = express.Router();
 const User = require("./Schemas");
 const bcrypt = require("bcryptjs");
+const jwt = require("jsonwebtoken");
 
 router.get("/",(req,res)=>{
     res.send("Hello");
@@ -50,6 +51,9 @@ router.post("/login",async(req,res)=>{
             if(!verifyUserpassword){
                 res.json({"message":"Invalid Credentials"})
             } else {
+                const token = jwt.sign({_id:userEmailExist._id},process.env.SECRETKEY);
+                userEmailExist.tokens = userEmailExist.tokens.concat({token:token});
+                userEmailExist.save();
                 res.json({"message":"Login successful"});
             }
         } 
