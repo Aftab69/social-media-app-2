@@ -23,7 +23,6 @@ const Registerpage = () => {
     try{
           e.preventDefault();
           const { firstName, lastName, email, password, cpassword } = user;
-          console.log(user);
           const res = await fetch("/register", {
             method:"POST",
             headers:{

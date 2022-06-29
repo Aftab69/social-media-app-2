@@ -8,4 +8,6 @@ const PORT = process.env.PORT;
 
 app.use(router);
 
-app.listen(PORT);
+app.listen(PORT,()=>{
+    console.log(`App is running at port ${PORT}`)
+});
