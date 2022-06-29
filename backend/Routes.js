@@ -52,7 +52,7 @@ router.post("/login",async(req,res)=>{
                 res.json({"message":"Invalid Credentials"})
             } else {
                 const token = jwt.sign({_id:userEmailExist._id},process.env.SECRETKEY);
-                userEmailExist.tokens = userEmailExist.tokens.concat({token:token});
+                userEmailExist.tokens.push({token:token});
                 userEmailExist.save();
                 res.json({"message":"Login successful"});
             }
