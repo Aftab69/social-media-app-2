@@ -3,6 +3,8 @@ const router = express.Router();
 const User = require("./Schemas");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
+const cookieParser = require("cookie-parser");
+router.use(cookieParser());
 
 router.get("/",(req,res)=>{
     res.send("Hello");
@@ -54,12 +56,29 @@ router.post("/login",async(req,res)=>{
                 const token = jwt.sign({_id:userEmailExist._id},process.env.SECRETKEY);
                 userEmailExist.tokens.push({token:token});
                 userEmailExist.save();
+                res.cookie("jwtoken",token);
                 res.status(200).json({"message":"Login successful"});
             }
         } 
        }
     }catch(error){
         console.log(error);
+    }
+})
+
+router.get("/profile",async(req,res)=>{
+    try{
+        const token = req.cookies.jwtoken;
+        const verifiedToken = jwt.verify(token,process.env.SECRETKEY);
+        const userExist = await User.findOne({_id:verifiedToken._id,"tokens.token":token});
+        if(!userExist){
+            res.status(400).json({"message":"User unauthorised"})
+        } else if(userExist){
+            res.send(userExist);
+        }
+    }catch(error){
+        res.status(400).json({"message":"User unauthorised"})
+        console.log(error)
     }
 })
 
