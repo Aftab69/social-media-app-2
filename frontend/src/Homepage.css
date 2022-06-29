@@ -1,0 +1,55 @@
+.imageContainer{
+   box-sizing: border-box;
+   width: 100vw;
+   height: 90vh;
+   overflow: hidden;
+}
+.textContainer{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0, 0, 0, 0.945);
+    box-sizing: border-box;
+    padding: 3%;
+    color: rgb(255, 255, 255);
+    text-align: start;
+    border: 2px solid yellow;
+    border-radius: 20px;
+    position: absolute;
+    top: 25vh;
+    left: 12.5vw;
+    width: 50vw;
+    height: auto;
+}
+.textContainer >h4{
+    text-align: center;
+    font-size: xx-large;
+    color: yellow;
+}
+
+/*for mobiles*/
+@media (max-width: 480px) {
+    .textContainer{
+        width: 75vw;
+        top: 35vh;
+    }
+}
+
+/*for tabs*/
+@media (min-width: 481px) and (max-width: 1024px){
+    .textContainer{
+        width: 60vw;
+        left: 20vw;
+        top: 35vh;
+    }
+}
+
+/*for PCs*/
+@media(min-width: 1025px){
+    .textContainer{
+        width: 40vw;
+        left: 30vw;
+        top: 35vh;
+    }
+}

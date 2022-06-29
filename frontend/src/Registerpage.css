@@ -1,0 +1,39 @@
+.imageContainerRegistrationPage{
+    width: 100vw;
+    height: 90vh;
+    box-sizing: border-box;
+    overflow: hidden;
+}
+.containerMidplacer{
+    box-sizing: border-box;
+    position: absolute;
+    top:10vh;
+    width: 100vw;
+    height: 90vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.textContainerRegistrationPage{
+    border-radius: 5%;
+    background: rgba(0, 0, 0, 0.925);
+    color: yellow;
+    zoom: 150%;
+    box-sizing: border-box;
+    padding: 2%;
+    border: 1px solid yellow;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.formDesign{
+    display: flex;
+    flex-direction: column;
+}
+.formDesign > input{
+    margin-bottom: 5%;
+}
+.formDesign > button:hover{
+    cursor: pointer;
+}
